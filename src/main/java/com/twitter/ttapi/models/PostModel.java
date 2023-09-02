@@ -1,6 +1,6 @@
 package com.twitter.ttapi.models;
 
-import com.twitter.ttapi.dtos.PostDto;
+import com.twitter.ttapi.dtos.CreatePostDto;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -17,7 +17,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class PostModel {
 
-    public PostModel(PostDto req) {
+    public PostModel(CreatePostDto req) {
         this.username = req.username();
         this.avatar = req.avatar();
         this.text = req.text();
