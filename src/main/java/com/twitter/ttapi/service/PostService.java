@@ -1,5 +1,8 @@
 package com.twitter.ttapi.service;
 
+import java.util.Collections;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -35,5 +38,16 @@ public class PostService {
 
         return true;
 
+    }
+
+    public List<PostModel> getPotsByUserName(String username) {
+
+        UserModel userOnline = loginRepo.findByUsername(username);
+
+        if (userOnline == null) {
+            return Collections.emptyList();
+        }
+
+        return postRepo.findAllByUsername(username);
     }
 }
