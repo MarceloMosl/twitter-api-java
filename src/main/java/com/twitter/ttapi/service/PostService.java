@@ -40,6 +40,14 @@ public class PostService {
 
     }
 
+    public List<PostModel> getPotsByPage(int page) {
+
+        List<PostModel> allPosts = postRepo.findAll();
+
+        return allPosts;
+
+    }
+
     public List<PostModel> getPotsByUserName(String username) {
 
         UserModel userOnline = loginRepo.findByUsername(username);

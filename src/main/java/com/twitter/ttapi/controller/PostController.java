@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.twitter.ttapi.dtos.PostDto;
@@ -23,6 +24,15 @@ public class PostController {
 
     @Autowired
     PostService postService;
+
+    @GetMapping()
+    public ResponseEntity<Object> getAllPosts(@RequestParam int page) {
+
+        List<PostModel> response = postService.getPotsByPage(page);
+
+        return ResponseEntity.status(HttpStatus.OK).body(response);
+
+    }
 
     @PostMapping
     public ResponseEntity<Object> createPost(@RequestBody PostDto post) {
